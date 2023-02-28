@@ -1,0 +1,108 @@
+.products-page-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 800px;
+  justify-content: center;
+  align-items: center;
+  .add-product {
+    margin-top: 7px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    align-items: center;
+  }
+  input {
+    height: 31px;
+    width: 331px;
+    margin-bottom: 8px;
+    border: 1px solid #bcbcbc;
+    border-radius: 18px;
+  }
+  textarea {
+    padding-top: 5px;
+    padding-left: 11px;
+    font-family: "Roboto", sans-serif;
+    background: #f5f5f7;
+    resize: none;
+    width: 331px;
+    height: 76px;
+    border: 1px solid #bcbcbc;
+    border-radius: 18px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    display: flex;
+    align-items: center;
+  }
+  .product-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .product-card {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 47%;
+    background: #ffffff;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 18px;
+    img {
+      width: 140px;
+      margin: auto;
+      margin-top: 8px;
+      border-radius: 10px;
+      margin-bottom: 5px;
+    }
+    h3 {
+      color: #6e6e73;
+      margin: 0;
+      margin-left: 14.59px;
+      padding: 0;
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 14px;
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.374px;
+      color: #1d1d1f;
+    }
+    p {
+      color: #6e6e73;
+      margin-left: 14.59px;
+      margin-bottom: 11px;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 18px;
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.224px;
+
+      color: #1d1d1f;
+    }
+  }
+  .choose-image {
+    margin-top: 8px;
+    width: 138px;
+    min-height: 28px;
+    color: #fff;
+    background: #2b3138;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    & input[type="file"] {
+      display: none;
+    }
+  }
+}

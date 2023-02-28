@@ -1,0 +1,18 @@
+.basket-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 31px 15.85px 0 20px;
+  .products-img {
+    border: 1px;
+    width: 165px;
+    height: 165px;
+  }
+  .product-acitons {
+    .count-actions-container {
+      height: 8px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
