@@ -37,7 +37,6 @@ const Authorisation: FC = () => {
         if (response) {
           const token = response.token;
           if (token) {
-            toast.success("login successfull");
             Cookies.set("token", token, { expires: 7 });
           }
         }

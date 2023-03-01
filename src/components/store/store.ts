@@ -5,11 +5,12 @@ import {
 } from "@reduxjs/toolkit";
 import { apiAuthService } from "../../services/apiAuthService";
 import { apiStoreService } from "../../services/apiStoreService";
-
-// import productReducer from "./reducers/ProductSlice";
+import { authSlice } from "./reducers/AuthSlice";
+import { basketSlice } from "./reducers/BasketSlice";
 
 const rootReducer = combineReducers({
-  //basket,
+  basket: basketSlice.reducer,
+  auth: authSlice.reducer,
   [apiStoreService.reducerPath]: apiStoreService.reducer,
   [apiAuthService.reducerPath]: apiAuthService.reducer,
 });

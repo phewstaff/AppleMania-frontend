@@ -6,7 +6,7 @@ import CategoryDropdown from "./CategoryDropdown";
 // import CategoryDropdown from "./CategoryDropdown";
 
 type CategoryProps = {
-  //   admin: boolean;
+  admin: boolean;
   id: string;
   name: string;
   image: string;

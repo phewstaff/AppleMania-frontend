@@ -19,6 +19,7 @@ export interface IProduct {
   };
   price?: string;
   quantity: number;
+  description?: string;
 }
 
 export interface ICategory {

@@ -1,0 +1,51 @@
+.selected-product-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .image {
+    margin: 21px 0;
+    width: 217px;
+    height: 217px;
+  }
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    background: #2b3138;
+    border-radius: 15px;
+    padding: 6px 14px 13px 17px;
+    box-sizing: border-box;
+    word-wrap: break-word;
+
+    .name {
+      font-weight: 700;
+      font-size: 25px;
+      line-height: 30px;
+      display: flex;
+      align-items: center;
+      color: #f4faff;
+    }
+    .price {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 27px;
+      color: #dfe5ec;
+    }
+    .description {
+      font-weight: 400;
+      font-size: 11px;
+      line-height: 13px;
+      color: #8a8f96;
+    }
+    .add-to-basket {
+      background: #ffffff;
+      border-radius: 20px;
+      width: 138px;
+      height: 26px;
+      font-weight: 700;
+      font-size: 11px;
+      line-height: 13px;
+      color: #000000;
+    }
+  }
+}

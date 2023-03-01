@@ -18,9 +18,9 @@ const categoryFormSchema = yup
 type FormData = yup.InferType<typeof categoryFormSchema>;
 
 const Categories: React.FC = () => {
-  //   const admin = useAppSelector((state) => {
-  //     return state.authReducer.admin;
-  //   });
+  const admin = useAppSelector((state) => {
+    return state.auth.admin;
+  });
   const [value, setValue] = useState<string | undefined>();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,42 +67,42 @@ const Categories: React.FC = () => {
     <>
       <ToastContainer position="bottom-right" />
       <div className="categories-container">
-        {/* {admin && ( */}
-        <div className="add-category">
-          <input
-            value={value}
-            onChangeCapture={(e) => {
-              setValue(e.currentTarget.value);
-            }}
-            {...register("name")}
-            placeholder="Name"
-            className="category-name-input"
-          ></input>
-          <label className="choose-image">
-            Choose image
+        {admin && (
+          <div className="add-category">
             <input
-              {...register("image")}
-              onChange={handleFileChange}
-              name="image"
-              type="file"
-              className="choose-image-input"
-            />
-          </label>
-          <label
-            className="submit-button"
-            onClick={handleSubmit(addOrUpdateCategory)}
-          >
-            Post category
-          </label>
-        </div>
-        {/* )} */}
+              value={value}
+              onChangeCapture={(e) => {
+                setValue(e.currentTarget.value);
+              }}
+              {...register("name")}
+              placeholder="Name"
+              className="category-name-input"
+            ></input>
+            <label className="choose-image">
+              Choose image
+              <input
+                {...register("image")}
+                onChange={handleFileChange}
+                name="image"
+                type="file"
+                className="choose-image-input"
+              />
+            </label>
+            <label
+              className="submit-button"
+              onClick={handleSubmit(addOrUpdateCategory)}
+            >
+              Post category
+            </label>
+          </div>
+        )}
         {isLoading && <h1>Loading...</h1>}
         {error && <h1>Error</h1>}
         {categories &&
           categories.map((item) => {
             return (
               <Category
-                // admin={admin}
+                admin={admin}
                 setValue={setValue}
                 key={item._id}
                 id={item._id}

@@ -14,13 +14,13 @@ export const apiAuthService = createApi({
       return headers;
     },
   }),
-
   endpoints: (build) => ({
     fetchIsTokenValid: build.query<string, void>({
       query: () => ({
         url: "",
       }),
     }),
+
     fetchLoginUser: build.mutation<UserResponse, IUser>({
       query: (payload) => {
         return {

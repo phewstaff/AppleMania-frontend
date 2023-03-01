@@ -1,3 +1,5 @@
+import Basket from "./components/basket/Basket";
+import SelectedProduct from "./components/selectedProduct/SelectedProduct";
 import AuthorisationPage from "./pages/AuthorisationPage";
 import BasketPage from "./pages/BasketPage";
 import CategoriesPage from "./pages/CategoriesPage";
@@ -29,5 +31,9 @@ export const routes = [
   {
     path: paths.PRODUCTS_ROUTE,
     Component: ProductsPage,
+  },
+  {
+    path: paths.SELECTED_PRODUCT_ROUTE,
+    Component: SelectedProduct,
   },
 ];
