@@ -26,6 +26,12 @@ export const apiStoreService = createApi({
         body,
       }),
     }),
+    deleteProduct: build.mutation<string, string | undefined>({
+      query: (id) => ({
+        method: "DELETE",
+        url: `products/${id}`,
+      }),
+    }),
     createCategory: build.mutation<ICategory, FormData>({
       query: (body) => ({
         method: "POST",

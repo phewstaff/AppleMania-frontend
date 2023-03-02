@@ -6,7 +6,7 @@ export const apiAuthService = createApi({
   reducerPath: "AuthApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:4000/api/admin",
-    prepareHeaders: (headers, { getState }) => {
+    prepareHeaders: (headers) => {
       const token = Cookies.get("token");
       if (token) {
         headers.set("authorization", `Bearer ${token}`);
