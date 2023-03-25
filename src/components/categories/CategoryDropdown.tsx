@@ -21,6 +21,7 @@ const CategoryDropdown: React.FC<CategoryDropdownProps> = ({
       {isOpen && (
         <>
           <div
+            key={id}
             onClick={() => setIsOpen(false)}
             className="dropdown-overlay"
           ></div>

@@ -1,8 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 
-const token = Cookies.get("token");
-
 interface IState {
   admin: boolean;
   token: string | undefined;
@@ -10,16 +8,18 @@ interface IState {
 
 const initialState: IState = {
   admin: false,
-  token: token,
+  token: Cookies.get("token"),
 };
-if (token) {
-  initialState.admin = true;
-} else {
-  initialState.admin = false;
-}
 
 export const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    setAdmin: (state, action: PayloadAction<boolean>) => {
+      state.admin = action.payload;
+    },
+    setToken: (state, action: PayloadAction<string>) => {
+      state.token = action.payload;
+    },
+  },
 });

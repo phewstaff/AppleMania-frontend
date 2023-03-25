@@ -6,8 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { useAppSelector } from "../../hooks/redux";
-import { IProduct } from "../../types/dataTypes";
-import SelectedProduct from "../selectedProduct/SelectedProduct";
+import { baseUrl } from "../../consts";
 
 const productFormSchema = yup
   .object()
@@ -17,17 +16,18 @@ const productFormSchema = yup
     description: yup.string().required(),
   })
   .required();
+
 type FormData = yup.InferType<typeof productFormSchema>;
 
 const Products: FC = () => {
   const admin = useAppSelector((state) => {
     return state.auth.admin;
   });
+
   const [selectedPreviewFile, setPreviewFile] = useState<File | null>(null);
   const [selectedFile1, setSelectedFile1] = useState<File | null>(null);
   const [selectedFile2, setSelectedFile2] = useState<File | null>(null);
   const [selectedFile3, setSelectedFile3] = useState<File | null>(null);
-  const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null);
 
   const handleFileChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -43,8 +43,11 @@ const Products: FC = () => {
   } = useForm<FormData>({
     resolver: yupResolver(productFormSchema),
   });
+
   const { id } = useParams();
+
   const [postProduct, { isError }] = apiStoreService.useCreateProductMutation();
+
   const submitForm = async (data: FormData) => {
     const formData = new FormData();
     formData.append("name", data.name);
@@ -55,17 +58,19 @@ const Products: FC = () => {
     formData.append("image2", selectedFile2 as File);
     formData.append("image3", selectedFile3 as File);
     formData.append("categoryId", id as string);
-    console.log("submittim");
     await postProduct(formData);
     invalidateProducts();
   };
+
   const navigate = useNavigate();
+
   const {
     refetch: invalidateProducts,
     data: products,
     isLoading,
     error,
   } = apiStoreService.useFetchProductsByCategoryIdQuery(id);
+
   useEffect(() => {
     invalidateProducts();
   }, []);
@@ -139,30 +144,22 @@ const Products: FC = () => {
         <div className="product-container">
           {products &&
             products.map((item) => {
-              console.log(item);
               return (
-                <>
-                  <div
-                    key={item._id}
-                    onClick={() => {
-                      navigate(`/product/${item._id}`);
-                      setSelectedProduct(item);
-                      console.log(selectedProduct);
-                    }}
-                    className="product-card"
-                  >
-                    <img
-                      src={`http://localhost:4000/api/` + item.previewImage?.lg}
-                    />
-                    <h3 className="product-name">{item.name}</h3>
-                    <p className="price">{item.price} руб</p>
+                <div
+                  key={item._id}
+                  onClick={() => {
+                    navigate(`/product/${item._id}`);
+                  }}
+                  className="product-card"
+                >
+                  <div className="product-image">
+                    <img src={baseUrl + item.previewImage?.lg} />
                   </div>
-                </>
+                  <h3 className="product-name">{item.name}</h3>
+                  <p className="price">{item.price} руб</p>
+                </div>
               );
             })}
-          {selectedProduct && (
-            <SelectedProduct productToUpdate={selectedProduct} />
-          )}
         </div>
       </div>
     </>

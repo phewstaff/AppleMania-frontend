@@ -7,25 +7,28 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import Category from "./Category";
-
+import Loading from "../loading/Loading";
 const categoryFormSchema = yup
   .object()
   .shape({
-    name: yup.string().required(),
+    name: yup.string().required().max(30),
     image: yup.mixed().required(),
   })
   .required();
+
 type FormData = yup.InferType<typeof categoryFormSchema>;
 
 const Categories: React.FC = () => {
   const admin = useAppSelector((state) => {
     return state.auth.admin;
   });
+
   const [value, setValue] = useState<string | undefined>();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedFile(event.target.files![0]);
   };
+
   const {
     register,
     handleSubmit,
@@ -33,11 +36,14 @@ const Categories: React.FC = () => {
   } = useForm<FormData>({
     resolver: yupResolver(categoryFormSchema),
   });
+
   const [currentCategoryId, setCurrentCategoryId] = useState<
     string | undefined
   >();
+
   const [postCategory, { isError }] =
     apiStoreService.useCreateCategoryMutation();
+
   const [updateCategory, { isError: updateError }] =
     apiStoreService.useUpdateCategoryMutation();
 
@@ -45,13 +51,11 @@ const Categories: React.FC = () => {
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("image", selectedFile as File);
-
     if (currentCategoryId) {
       await updateCategory({ currentCategoryId, formData });
     } else {
       await postCategory(formData);
     }
-
     setCurrentCategoryId(undefined);
     invalidateCategories();
   };
@@ -63,9 +67,12 @@ const Categories: React.FC = () => {
     error,
   } = apiStoreService.useFetchCategoriesQuery();
 
+  // update the page each time when admin is changed (when user is logged in or logged out)
+
   return (
     <>
       <ToastContainer position="bottom-right" />
+      {isLoading && <Loading />}
       <div className="categories-container">
         {admin && (
           <div className="add-category">
@@ -96,26 +103,28 @@ const Categories: React.FC = () => {
             </label>
           </div>
         )}
-        {isLoading && <h1>Loading...</h1>}
         {error && <h1>Error</h1>}
-        {categories &&
-          categories.map((item) => {
-            return (
-              <Category
-                admin={admin}
-                setValue={setValue}
-                key={item._id}
-                id={item._id}
-                name={item.name}
-                image={item.image}
-                setCurrentCategoryId={setCurrentCategoryId}
-              />
-            );
-          })}
+        {categories && (
+          <div className="category-cards-container">
+            {categories.map((item) => {
+              return (
+                <Category
+                  admin={admin}
+                  setValue={setValue}
+                  key={item._id}
+                  id={item._id}
+                  name={item.name}
+                  image={item.image}
+                  setCurrentCategoryId={setCurrentCategoryId}
+                  refetch={invalidateCategories}
+                />
+              );
+            })}
+          </div>
+        )}
       </div>
     </>
   );
 };
 
 export default Categories;
-export {};

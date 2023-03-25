@@ -4,14 +4,9 @@ import Products from "../components/products/Products";
 
 const ProductsPage: FC = () => {
   return (
-    <>
-      <Layout
-        basket={true}
-        backButton={true}
-        title="products"
-        children={<Products />}
-      />
-    </>
+    <Layout basket={true} backButton={true} title="products">
+      <Products />
+    </Layout>
   );
 };
 

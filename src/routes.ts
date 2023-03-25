@@ -1,6 +1,6 @@
 import Basket from "./components/basket/Basket";
 import SelectedProduct from "./components/selectedProduct/SelectedProduct";
-import AuthorisationPage from "./pages/AuthorisationPage";
+import AuthorisationPage from "./pages/AuthorizationPage";
 import BasketPage from "./pages/BasketPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import LoadingPage from "./pages/LoadingPage";
@@ -21,16 +21,12 @@ export const routes = [
     Component: ProductsPage,
   },
   {
-    path: paths.AUTHORISATION_ROUTE,
+    path: paths.AUTHORIZATION_ROUTE,
     Component: AuthorisationPage,
   },
   {
     path: paths.LOADING_ROUTE,
     Component: LoadingPage,
-  },
-  {
-    path: paths.PRODUCTS_ROUTE,
-    Component: ProductsPage,
   },
   {
     path: paths.SELECTED_PRODUCT_ROUTE,

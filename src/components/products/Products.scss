@@ -3,7 +3,16 @@
   flex-wrap: wrap;
   max-width: 800px;
   justify-content: center;
-  align-items: center;
+
+  .product-container {
+    display: flex;
+    margin: auto;
+    gap: 6px;
+    width: 100%;
+    flex-wrap: wrap;
+    width: 311px;
+  }
+
   .add-product {
     margin-top: 7px;
     display: flex;
@@ -11,6 +20,7 @@
     margin-bottom: 16px;
     align-items: center;
   }
+
   input {
     height: 31px;
     width: 331px;
@@ -18,6 +28,7 @@
     border: 1px solid #bcbcbc;
     border-radius: 18px;
   }
+
   textarea {
     padding-top: 5px;
     padding-left: 11px;
@@ -37,55 +48,65 @@
     display: flex;
     align-items: center;
   }
-  .product-container {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    flex-wrap: wrap;
-    align-items: center;
-  }
+
   .product-card {
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
-    width: 47%;
+    width: 147px;
+    height: 170px;
     background: #ffffff;
     box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
     border-radius: 18px;
-    img {
-      width: 140px;
+    padding-bottom: 11px;
+
+    .product-image {
+      width: 130px;
       margin: auto;
       margin-top: 8px;
-      border-radius: 10px;
       margin-bottom: 5px;
+      height: 120.76px;
     }
+
+    img {
+      max-width: 100%;
+      object-fit: cover;
+      width: 100%;
+      height: 120.76px;
+      border-radius: 10px;
+    }
+
     h3 {
+      margin-bottom: 5px;
+      text-transform: capitalize;
       color: #6e6e73;
-      margin: 0;
-      margin-left: 14.59px;
-      padding: 0;
+      margin-left: 10.59px;
       font-weight: 400;
       font-size: 10px;
       line-height: 14px;
-      display: flex;
-      align-items: center;
       letter-spacing: 0.374px;
       color: #1d1d1f;
+      max-width: 100%; /* make sure H3 doesn't overflow its container */
+      white-space: nowrap; /* prevent line breaks within the H3 */
+      overflow: hidden; /* hide any text that doesn't fit within the H3 */
+      text-overflow: ellipsis; /* add an ellipsis to indicate truncated text */
     }
+
     p {
+      text-transform: capitalize;
       color: #6e6e73;
-      margin-left: 14.59px;
-      margin-bottom: 11px;
+      margin-left: 10.59px;
       font-weight: 400;
       font-size: 13px;
       line-height: 18px;
-      display: flex;
-      align-items: center;
       letter-spacing: 0.224px;
-
       color: #1d1d1f;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis; /* add an ellipsis to indicate truncated text */
     }
   }
+
   .choose-image {
     margin-top: 8px;
     width: 138px;

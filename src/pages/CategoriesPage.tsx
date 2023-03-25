@@ -4,14 +4,9 @@ import Layout from "../components/layout/Layout";
 
 const CategoriesPage: FC = () => {
   return (
-    <>
-      <Layout
-        basket={false}
-        backButton={false}
-        title="сategories"
-        children={<Categories />}
-      />
-    </>
+    <Layout basket={false} backButton={false} title="сategories">
+      <Categories />
+    </Layout>
   );
 };
 

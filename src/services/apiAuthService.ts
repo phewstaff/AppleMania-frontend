@@ -1,11 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import Cookies from "js-cookie";
+import { baseUrl } from "../consts";
 import { IUser, UserResponse } from "../types/dataTypes";
 
 export const apiAuthService = createApi({
   reducerPath: "AuthApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:4000/api/admin",
+    baseUrl: baseUrl + "admin/",
     prepareHeaders: (headers) => {
       const token = Cookies.get("token");
       if (token) {

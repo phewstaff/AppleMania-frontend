@@ -3,20 +3,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   .back-button {
     cursor: pointer;
-    margin-left: 26.25px;
     height: 11px;
     width: 5.5px;
   }
   .apple-logo {
     margin: auto;
   }
+
   .basket-button {
     cursor: pointer;
-    padding-right: 24.9px;
     height: 15px;
-    width: 13.100000381469727px;
+    width: 5.5px;
   }
 }
 .title-container {
@@ -24,7 +24,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  margin-bottom: 7px;
   p.title {
     all: unset;
     text-align: center;
@@ -32,7 +32,6 @@
     font-size: 20px;
     line-height: 24px;
     letter-spacing: 0.04em;
-    cursor: pointer;
   }
   p.under-title {
     all: unset;
@@ -42,6 +41,5 @@
     line-height: 14px;
     letter-spacing: 0.02em;
     color: #b7b7b7;
-    cursor: pointer;
   }
 }

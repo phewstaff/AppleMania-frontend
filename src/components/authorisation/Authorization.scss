@@ -1,10 +1,11 @@
 .auth-container {
-  margin-top: 140px;
+  margin-top: 90px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 form {
+  gap: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,10 +21,15 @@ input {
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
-  display: flex;
   align-items: center;
 }
 button {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 27px;
   margin-top: 16px;
   border: none;
   background: none;

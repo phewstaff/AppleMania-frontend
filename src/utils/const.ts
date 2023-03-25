@@ -4,5 +4,5 @@ export const paths = {
   SELECTED_PRODUCT_ROUTE: "product/:id",
   CATEGORIES_ROUTE: "categories",
   BASKET_ROUTE: "basket",
-  AUTHORISATION_ROUTE: "authorisation",
+  AUTHORIZATION_ROUTE: "authorization",
 };

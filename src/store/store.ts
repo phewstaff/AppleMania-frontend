@@ -3,8 +3,8 @@ import {
   configureStore,
   getDefaultMiddleware,
 } from "@reduxjs/toolkit";
-import { apiAuthService } from "../../services/apiAuthService";
-import { apiStoreService } from "../../services/apiStoreService";
+import { apiAuthService } from "../services/apiAuthService";
+import { apiStoreService } from "../services/apiStoreService";
 import { authSlice } from "./reducers/AuthSlice";
 import { basketSlice } from "./reducers/BasketSlice";
 

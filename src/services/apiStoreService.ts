@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import Cookies from "js-cookie";
+import { baseUrl } from "../consts";
 import { ICategory, IProduct } from "../types/dataTypes";
 interface IBody {
   username: string;
@@ -9,7 +10,7 @@ interface IBody {
 export const apiStoreService = createApi({
   reducerPath: "storeApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:4000/api/",
+    baseUrl: baseUrl,
     prepareHeaders: (headers) => {
       const token = Cookies.get("token");
       if (token) {
@@ -32,6 +33,19 @@ export const apiStoreService = createApi({
         url: `products/${id}`,
       }),
     }),
+    updateProduct: build.mutation<
+      IProduct,
+      { id: string | undefined; formData: FormData }
+    >({
+      query: ({ id, formData }) => {
+        return {
+          method: "PATCH",
+          url: `products/${id}`,
+          body: formData,
+        };
+      },
+    }),
+
     createCategory: build.mutation<ICategory, FormData>({
       query: (body) => ({
         method: "POST",

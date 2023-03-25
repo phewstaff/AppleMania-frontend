@@ -29,11 +29,19 @@ export interface ICategory {
   imageMin: string;
   __v: number;
 }
+
 export interface IUser {
   username: string;
   password: string;
 }
+
 export interface UserResponse {
   token: string;
   username: string;
+}
+
+export interface IValuesToUpdate {
+  description: string | undefined;
+  price: string | undefined;
+  name: string | undefined;
 }

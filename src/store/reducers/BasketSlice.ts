@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IProduct } from "../../../types/dataTypes";
+import { IProduct } from "../../types/dataTypes";
 
 interface IState {
   products: IProduct[];
@@ -27,12 +27,37 @@ export const basketSlice = createSlice({
         });
       }
     },
-    increaseProductQuantity: (state, action: PayloadAction<string>) => {
+    increaseProductQuantity: (
+      state,
+      action: PayloadAction<string | undefined>
+    ) => {
       const productIndex = state.products.findIndex(
         (p) => p._id === action.payload
       );
       if (productIndex !== -1) {
         state.products[productIndex].quantity++;
+      }
+    },
+    decreaseProductQuantity: (
+      state,
+      action: PayloadAction<string | undefined>
+    ) => {
+      const productIndex = state.products.findIndex(
+        (p) => p._id === action.payload
+      );
+      if (productIndex !== -1 && state.products[productIndex].quantity >= 1) {
+        state.products[productIndex].quantity--;
+      }
+    },
+    removeProductFromBasket: (
+      state,
+      action: PayloadAction<string | undefined>
+    ) => {
+      const productIndex = state.products.findIndex(
+        (p) => p._id === action.payload
+      );
+      if (productIndex !== -1) {
+        state.products.splice(productIndex, 1);
       }
     },
   },

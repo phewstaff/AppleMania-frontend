@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import "./Authorisation.scss";
+import "./Authorization.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { apiAuthService } from "../../services/apiAuthService";
@@ -9,6 +9,8 @@ import Cookies from "js-cookie";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { authSlice } from "../../store/reducers/AuthSlice";
 
 const loginFormSchema = yup
   .object({
@@ -16,9 +18,16 @@ const loginFormSchema = yup
     password: yup.string().min(4).max(15).required(),
   })
   .required();
+
 type FormData = IUser;
 
 const Authorisation: FC = () => {
+  const admin = useAppSelector((state) => {
+    return state.auth.admin;
+  });
+
+  const dispatch = useAppDispatch();
+
   const {
     register,
     handleSubmit,
@@ -26,10 +35,12 @@ const Authorisation: FC = () => {
   } = useForm<FormData>({
     resolver: yupResolver(loginFormSchema),
   });
+
   const [
     login,
     { isSuccess: isLoginSuccess, isLoading, data, isError: isLoginError },
   ] = apiAuthService.useFetchLoginUserMutation();
+
   const submitForm = async (user: FormData) => {
     await login(user)
       .unwrap()
@@ -44,10 +55,12 @@ const Authorisation: FC = () => {
       .catch((error) => {});
   };
   const navigate = useNavigate();
+
   useEffect(() => {
     if (isLoginSuccess) {
       toast.success("successfully logged");
       navigate("/categories");
+      dispatch(authSlice.actions.setAdmin(true));
     } else if (isLoginError) {
       toast.error("Login error");
     }
@@ -68,7 +81,6 @@ const Authorisation: FC = () => {
             <p>{errors.username?.message}</p>
           </div>
           <div className="auth-form-group">
-            <label htmlFor="password"></label>
             <input
               {...register("password")}
               placeholder="password..."
@@ -76,10 +88,10 @@ const Authorisation: FC = () => {
               name="password"
               required
             />
-            {errors.password?.message}
+            <p>{errors.password?.message}</p>
           </div>
           <button type="submit" className="auth-submit-button">
-            Sign In
+            Sign in
           </button>
         </form>
       </div>
@@ -88,4 +100,3 @@ const Authorisation: FC = () => {
 };
 
 export default Authorisation;
-export {};
