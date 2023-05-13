@@ -1,15 +1,15 @@
 import { FC } from "react";
-import Authorisation from "../components/authorisation/Authorization";
+import Authorization from "../components/authorisation/Authorization";
 import Layout from "../components/layout/Layout";
 
-const AuthorisationPage: FC = () => {
+const AuthorizationPage: FC = () => {
   return (
     <>
-      <Layout basket={false} backButton={true} title="Authorisation">
-        <Authorisation />
+      <Layout basket={false} backButton={true} title="Authorization">
+        <Authorization />
       </Layout>
     </>
   );
 };
 
-export default AuthorisationPage;
+export default AuthorizationPage;

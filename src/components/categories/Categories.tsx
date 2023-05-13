@@ -67,8 +67,6 @@ const Categories: React.FC = () => {
     error,
   } = apiStoreService.useFetchCategoriesQuery();
 
-  // update the page each time when admin is changed (when user is logged in or logged out)
-
   return (
     <>
       <ToastContainer position="bottom-right" />

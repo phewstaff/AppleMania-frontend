@@ -1,4 +1,3 @@
-import Basket from "./components/basket/Basket";
 import SelectedProduct from "./components/selectedProduct/SelectedProduct";
 import AuthorisationPage from "./pages/AuthorizationPage";
 import BasketPage from "./pages/BasketPage";

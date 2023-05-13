@@ -74,4 +74,3 @@ const Category: React.FC<CategoryProps> = ({
 };
 
 export default Category;
-export {};

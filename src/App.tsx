@@ -1,4 +1,3 @@
-import { is } from "immer/dist/internal";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
@@ -11,6 +10,7 @@ import { authSlice } from "./store/reducers/AuthSlice";
 
 function App() {
   const dispatch = useAppDispatch();
+
   const { isError, data: isSuccess } =
     apiAuthService.useFetchIsTokenValidQuery();
 
@@ -28,6 +28,7 @@ function App() {
       dispatch(authSlice.actions.setAdmin(false));
       dispatch(authSlice.actions.setToken(""));
     }
+
     if (isSuccess && token) {
       dispatch(authSlice.actions.setToken(Cookies.get("token")!));
       dispatch(authSlice.actions.setAdmin(true));

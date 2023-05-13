@@ -21,7 +21,7 @@ const loginFormSchema = yup
 
 type FormData = IUser;
 
-const Authorisation: FC = () => {
+const Authorization: FC = () => {
   const admin = useAppSelector((state) => {
     return state.auth.admin;
   });
@@ -54,6 +54,7 @@ const Authorisation: FC = () => {
       })
       .catch((error) => {});
   };
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -71,6 +72,7 @@ const Authorisation: FC = () => {
       <ToastContainer position="bottom-right" />
       <div className="auth-container">
         <h1 className="auth-title">Sign in to Applemania</h1>
+
         <form onSubmit={handleSubmit(submitForm)} className="auth-form">
           <div className="auth-form-group">
             <input
@@ -80,6 +82,7 @@ const Authorisation: FC = () => {
             />
             <p>{errors.username?.message}</p>
           </div>
+
           <div className="auth-form-group">
             <input
               {...register("password")}
@@ -90,6 +93,7 @@ const Authorisation: FC = () => {
             />
             <p>{errors.password?.message}</p>
           </div>
+
           <button type="submit" className="auth-submit-button">
             Sign in
           </button>
@@ -99,4 +103,4 @@ const Authorisation: FC = () => {
   );
 };
 
-export default Authorisation;
+export default Authorization;

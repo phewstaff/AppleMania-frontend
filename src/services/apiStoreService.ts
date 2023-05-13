@@ -27,12 +27,14 @@ export const apiStoreService = createApi({
         body,
       }),
     }),
+
     deleteProduct: build.mutation<string, string | undefined>({
       query: (id) => ({
         method: "DELETE",
         url: `products/${id}`,
       }),
     }),
+
     updateProduct: build.mutation<
       IProduct,
       { id: string | undefined; formData: FormData }
@@ -53,12 +55,14 @@ export const apiStoreService = createApi({
         body,
       }),
     }),
+
     deleteCategory: build.mutation<string, string>({
       query: (id) => ({
         method: "DELETE",
         url: `categories/${id}`,
       }),
     }),
+
     updateCategory: build.mutation<
       ICategory,
       { currentCategoryId: string; formData: FormData }
@@ -69,21 +73,25 @@ export const apiStoreService = createApi({
         body: formData,
       }),
     }),
+
     fetchAllProducts: build.query<IProduct[], void>({
       query: () => ({
         url: "products",
       }),
     }),
+
     fetchCategories: build.query<ICategory[], void>({
       query: () => ({
         url: "categories",
       }),
     }),
+
     fetchProductsByCategoryId: build.query<IProduct[], string | undefined>({
       query: (id) => ({
         url: `products/category/${id}`,
       }),
     }),
+
     fetchProductById: build.query<IProduct[], string | undefined>({
       query: (id) => ({
         url: `products/${id}`,

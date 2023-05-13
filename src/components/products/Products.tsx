@@ -88,12 +88,14 @@ const Products: FC = () => {
               className="product-input"
               type="text"
             ></input>
+
             <input
               {...register("price")}
               placeholder="Price"
               type="text"
               className="product-input"
             ></input>
+
             <textarea
               placeholder="Description"
               {...register("description")}
@@ -109,6 +111,7 @@ const Products: FC = () => {
                 className="choose-image-input"
               />
             </label>
+
             <label className="choose-image">
               Choose image 1
               <input
@@ -118,6 +121,7 @@ const Products: FC = () => {
                 className="choose-image-input"
               />
             </label>
+
             <label className="choose-image">
               Choose image 2
               <input
@@ -127,6 +131,7 @@ const Products: FC = () => {
                 className="choose-image-input"
               />
             </label>
+
             <label className="choose-image">
               Chosse image 3
               <input
@@ -136,6 +141,7 @@ const Products: FC = () => {
                 className="choose-image-input"
               />
             </label>
+
             <label className="submit-button" onClick={handleSubmit(submitForm)}>
               Post Product
             </label>
@@ -167,4 +173,3 @@ const Products: FC = () => {
 };
 
 export default Products;
-export {};

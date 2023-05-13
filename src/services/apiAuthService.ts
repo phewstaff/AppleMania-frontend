@@ -5,16 +5,21 @@ import { IUser, UserResponse } from "../types/dataTypes";
 
 export const apiAuthService = createApi({
   reducerPath: "AuthApi",
+
   baseQuery: fetchBaseQuery({
     baseUrl: baseUrl + "admin/",
+
     prepareHeaders: (headers) => {
       const token = Cookies.get("token");
+
       if (token) {
         headers.set("authorization", `Bearer ${token}`);
       }
+
       return headers;
     },
   }),
+
   endpoints: (build) => ({
     fetchIsTokenValid: build.query<string, void>({
       query: () => ({
