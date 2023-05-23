@@ -18,6 +18,7 @@ export const basketSlice = createSlice({
         return p._id !== action.payload && p.quantity !== 0;
       });
     },
+
     addToBasket: (state, action: PayloadAction<IProduct>) => {
       const { _id: productExists } = action.payload;
       if (!state.products.find((p) => p._id === productExists)) {
@@ -27,6 +28,7 @@ export const basketSlice = createSlice({
         });
       }
     },
+
     increaseProductQuantity: (
       state,
       action: PayloadAction<string | undefined>
@@ -38,6 +40,7 @@ export const basketSlice = createSlice({
         state.products[productIndex].quantity++;
       }
     },
+
     decreaseProductQuantity: (
       state,
       action: PayloadAction<string | undefined>
@@ -49,6 +52,7 @@ export const basketSlice = createSlice({
         state.products[productIndex].quantity--;
       }
     },
+
     removeProductFromBasket: (
       state,
       action: PayloadAction<string | undefined>

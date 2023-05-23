@@ -7,9 +7,13 @@ type CategoryDropdownProps = {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   onUpdate: () => void;
   onDelete: () => void;
+  setCurrentCategoryId: React.Dispatch<
+    React.SetStateAction<string | undefined>
+  >;
 };
 
 const CategoryDropdown: React.FC<CategoryDropdownProps> = ({
+  setCurrentCategoryId,
   onUpdate,
   onDelete,
   id,
@@ -26,7 +30,13 @@ const CategoryDropdown: React.FC<CategoryDropdownProps> = ({
             className="dropdown-overlay"
           ></div>
           <div className="category-dropdown">
-            <button className="category-dropdown-button" onClick={onUpdate}>
+            <button
+              className="category-dropdown-button"
+              onClick={() => {
+                onUpdate();
+                setCurrentCategoryId(id);
+              }}
+            >
               Update
             </button>
             <button className="category-dropdown-button" onClick={onDelete}>

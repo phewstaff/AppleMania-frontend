@@ -93,11 +93,12 @@ const Categories: React.FC = () => {
                 className="choose-image-input"
               />
             </label>
+
             <label
               className="submit-button"
               onClick={handleSubmit(addOrUpdateCategory)}
             >
-              Post category
+              {!currentCategoryId ? <>Post category</> : <>Update Category</>}
             </label>
           </div>
         )}

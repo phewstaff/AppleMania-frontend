@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import Cookies from "js-cookie";
 import { baseUrl } from "../consts";
 import { ICategory, IProduct } from "../types/dataTypes";
+
 interface IBody {
   username: string;
   password: string;
@@ -19,6 +20,7 @@ export const apiStoreService = createApi({
       return headers;
     },
   }),
+
   endpoints: (build) => ({
     createProduct: build.mutation<IProduct, FormData>({
       query: (body) => ({

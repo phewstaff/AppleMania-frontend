@@ -14,6 +14,7 @@ const rootReducer = combineReducers({
   [apiStoreService.reducerPath]: apiStoreService.reducer,
   [apiAuthService.reducerPath]: apiAuthService.reducer,
 });
+
 export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,

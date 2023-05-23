@@ -1,1 +1,1 @@
-export const baseUrl = "https://applemania-api.onrender.com/api/";
+export const baseUrl = "https://applemania-new-api.onrender.com/api/";

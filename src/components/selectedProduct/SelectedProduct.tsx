@@ -37,6 +37,7 @@ const SelectedProduct: FC = () => {
   const handleAddToBasket = (product: any) => {
     dispatch(basketSlice.actions.addToBasket(product[0]));
   };
+
   const [deleteProduct, { isLoading: loading }] =
     apiStoreService.useDeleteProductMutation();
 
@@ -50,6 +51,7 @@ const SelectedProduct: FC = () => {
   });
 
   const {
+    refetch: invalidateProduct,
     data: product,
     isLoading,
     error,
@@ -60,7 +62,14 @@ const SelectedProduct: FC = () => {
     formData.append("name", data.name);
     formData.append("price", data.price);
     formData.append("description", data.description);
-    updatePost({ formData, id });
+    updatePost({ formData, id })
+      .unwrap()
+      .then((response) => {
+        if (response) {
+          invalidateProduct();
+        }
+      })
+      .catch((error) => {});
   };
 
   return (
@@ -114,11 +123,13 @@ const SelectedProduct: FC = () => {
                     type="text"
                     defaultValue={product[0].name}
                   />
+
                   <input
                     {...register("price")}
                     type="text"
                     defaultValue={product[0].price}
                   />
+
                   <input
                     {...register("description")}
                     type="text"

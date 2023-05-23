@@ -35,6 +35,7 @@ const Category: React.FC<CategoryProps> = ({
   return (
     <div key={id} className="category-card">
       <CategoryDropdown
+        setCurrentCategoryId={setCurrentCategoryId}
         id={id}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
@@ -50,7 +51,6 @@ const Category: React.FC<CategoryProps> = ({
       {admin && (
         <div
           onClick={() => {
-            setCurrentCategoryId(id);
             setIsOpen(true);
           }}
           className="dropdown-dots"
